@@ -26,7 +26,7 @@ public class LinkSpike {
   </target>
 	 */
 	public static void main(String[] args) throws Exception {
-		String myArgs[] = {"-bp", "$NXT_HOME/lib/classes.jar", "-cp", 
+		String myArgs[] = {"-bp", "/home/andreas/lejos_nxj/lib/classes.jar", "-cp", 
 				"target/classes", "-wo", "LE" , "App" ,"-o", "target/Appers.nxj", "-v"};
 		TinyVM tinyVM = new TinyVM();
 		tinyVM.start(myArgs);
