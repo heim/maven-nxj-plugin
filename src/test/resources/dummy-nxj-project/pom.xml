@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	
 	<properties>
-	 <nxj.home>/home/andreas/lejos_nxj</nxj.home>
+	 <nxj.home>/Users/andreas/lejos_nxj</nxj.home>
 	</properties>
 	
 	<dependencies>

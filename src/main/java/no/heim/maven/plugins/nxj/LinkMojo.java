@@ -1,6 +1,7 @@
 package no.heim.maven.plugins.nxj;
 
 import js.tinyvm.TinyVM;
+import js.tinyvm.TinyVMException;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -10,6 +11,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * Echos an object string to the output screen.
  * @goal link
  * @requiresProject true
+ * @execute phase="compile"
  */
 public class LinkMojo extends AbstractMojo
 {
@@ -40,15 +42,13 @@ public class LinkMojo extends AbstractMojo
     
     /**
      * Filter unused classes?
-     * @parameter expression="${filterUnused} default-value=true;
+     * @parameter expression="${filterUnused}" default-value=true;
      */
     private Object filterUnusedClasses;
 
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
-    	String myArgs[] = {"-bp", "/home/andreas/lejos_nxj/lib/classes.jar", "-cp", 
-				"target/classes", "-wo", "LE" , "App" ,"-o", "target/Appers.nxj", "-v"};
     	
     	TinyVM tinyVM = new TinyVM();
     	
@@ -56,8 +56,13 @@ public class LinkMojo extends AbstractMojo
     	
     	boolean all = !Boolean.parseBoolean(filterUnusedClasses.toString());
     	String classes[] = { mainClass.toString() };
-    	tinyVM.start(classPath, classes, all, "target/" + applicationName.toString(), 
-    			false, false, 0, true);
+    	try {
+			tinyVM.start(classPath, classes, all, "target/" + applicationName.toString(), 
+					false, false, 0, true);
+		} catch (TinyVMException e) {
+			getLog().error("Could not perform linking", e);
+			throw new MojoFailureException(e, "Error", "");
+		}
     	
         getLog().info( message.toString() );
     }
