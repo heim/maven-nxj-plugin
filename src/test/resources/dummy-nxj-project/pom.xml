@@ -7,11 +7,11 @@
 	<version>1.0</version>
 	<name>maven-test</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
-	 <nxj.home>/Users/andreas/lejos_nxj</nxj.home>
+		<nxj.home>/Users/andreas/lejos_nxj</nxj.home>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.lejos</groupId>
@@ -33,18 +33,18 @@
 			</plugin>
 			
 			<plugin>
-			 <artifactId>maven-nxj-plugin</artifactId>
-			 <groupId>no.heim.maven.nxj</groupId>
-			 <version>1.0-SNAPSHOT</version>
-			 <configuration>
-			   
-			   <bootClassPath>${nxj.home}/lib/classes.jar</bootClassPath>
-			   <applicationName>plugin-test.nxj</applicationName>
-			   <mainClass>App</mainClass>
-			 </configuration>
+				<artifactId>maven-nxj-plugin</artifactId>
+				<groupId>no.heim.maven.nxj</groupId>
+				<version>1.0-SNAPSHOT</version>
+				<configuration>
+
+					<bootClassPath>${nxj.home}/lib/classes.jar</bootClassPath>
+					<applicationName>plugin-test.nxj</applicationName>
+					<mainClass>App</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
-		
-		
+
+
 	</build>
 </project>
