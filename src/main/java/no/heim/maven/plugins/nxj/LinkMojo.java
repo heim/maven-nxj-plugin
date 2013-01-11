@@ -7,6 +7,8 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
+import java.util.Map;
+
 /**
  * Echos an object string to the output screen.
  * @goal link
@@ -66,5 +68,12 @@ public class LinkMojo extends AbstractMojo
     	
         getLog().info( message.toString() );
     }
+
+
+    private void bajs() {
+        Map ctx = getPluginContext();
+        
+    }
+
 
 }
